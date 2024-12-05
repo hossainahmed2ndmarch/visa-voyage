@@ -4,9 +4,17 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ['Merriweather', 'serif'],
+        logo: ['Nunito', 'Helvetica', 'Arial', 'sans-serif'],
+      },
+
+    },
   },
-  plugins: [require('daisyui'),],
+  plugins: [require('daisyui')],
 }
+
 
