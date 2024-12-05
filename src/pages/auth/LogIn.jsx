@@ -170,7 +170,7 @@ const LogIn = () => {
         </form>
         <p className="font-semibold text-navyText text-center">
           Don’t Have An Account ?{" "}
-          <Link to={"/auth/register"} className="text-[#F75B5F]">
+          <Link to={"/registration"} className="text-[#F75B5F]">
             Register
           </Link>
         </p>
