@@ -21,10 +21,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("http://localhost:5000/visas/home"),
       },
       {
         path: "all-visas",
         element: <AllVisas></AllVisas>,
+        loader: () => fetch("http://localhost:5000/visas"),
       },
       {
         path: "login",
@@ -35,12 +37,14 @@ const router = createBrowserRouter([
         element: <Registration></Registration>,
       },
       {
-        path: "/visa/:id",
+        path: "/visa-details/:id",
         element: (
           <PrivateRoute>
             <VisaDetails />
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/visas/${params.id}`),
       },
       {
         path: "/add-visa",

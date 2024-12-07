@@ -23,7 +23,8 @@
     "react-toastify": "^10.0.6",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.14.5",
-    "swiper": "^11.1.15"
+    "swiper": "^11.1.15",
+    "tailwindcss-neumorphism": "^0.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
