@@ -69,6 +69,7 @@ const router = createBrowserRouter([
             <MyApplications />
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/applications"),
       },
     ],
   },

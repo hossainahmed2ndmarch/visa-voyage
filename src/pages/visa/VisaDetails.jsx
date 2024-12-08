@@ -25,7 +25,12 @@ const VisaDetails = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const applicationData = Object.fromEntries(formData.entries());
-
+    applicationData.countryName = countryName;
+    applicationData.countryImage = countryImage;
+    applicationData.visaType = visaType;
+    applicationData.processingTime = processingTime;
+    applicationData.validity = validity;
+    applicationData.applicationMethod = applicationMethod;
     console.log(applicationData);
 
     // Send data to the server
