@@ -14,7 +14,7 @@ const MyAddedVisas = () => {
       fetch(`https://visa-voyage-server.vercel.app/my-added-visas/${user?.email}`)
         .then((res) => res.json())
         .then((data) => setVisas(data))
-        .catch((error) => console.error("Error fetching visas:", error));
+        // .catch((error) => console.error("Error fetching visas:", error));
     }
   }, [user]);
 

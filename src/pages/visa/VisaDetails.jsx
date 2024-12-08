@@ -31,7 +31,7 @@ const VisaDetails = () => {
     applicationData.processingTime = processingTime;
     applicationData.validity = validity;
     applicationData.applicationMethod = applicationMethod;
-    console.log(applicationData);
+    // console.log(applicationData);
 
     // Send data to the server
     fetch("https://visa-voyage-server.vercel.app/applications", {
@@ -43,7 +43,7 @@ const VisaDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",

@@ -51,7 +51,7 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
         );
         onClose(); // Close modal
       })
-      .catch((error) => console.error("Error updating visa:", error));
+      // .catch((error) => console.error("Error updating visa:", error));
   };
 
   return (

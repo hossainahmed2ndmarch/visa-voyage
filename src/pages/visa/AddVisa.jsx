@@ -22,7 +22,7 @@ const AddVisa = () => {
     const visaData = Object.fromEntries(formData.entries());
     visaData.requiredDocuments = requiredDocuments;
     visaData.addedBy = user.email;
-    console.log(visaData);
+    // console.log(visaData);
 
     // Send data to the server
     fetch("https://visa-voyage-server.vercel.app/visas", {
@@ -34,7 +34,7 @@ const AddVisa = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
