@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const VisaDetails = () => {
   const visa = useLoaderData();
@@ -18,6 +19,37 @@ const VisaDetails = () => {
     applicationMethod,
     requiredDocuments,
   } = visa;
+
+  // Submit functionality
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const applicationData = Object.fromEntries(formData.entries());
+
+    console.log(applicationData);
+
+    // Send data to the server
+    fetch("http://localhost:5000/applications", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(applicationData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "You have successfully applied",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+          setIsModalOpen(false);
+        }
+      });
+  };
 
   return (
     <div className="max-w-4xl mx-auto my-10 p-6 rounded-xl shadow-md bg-gray-100">
@@ -67,13 +99,13 @@ const VisaDetails = () => {
         <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
           <div className="bg-white rounded-lg p-6 max-w-md w-full">
             <h2 className="text-2xl font-bold mb-4">Apply for the Visa</h2>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="block font-semibold mb-1">Email</label>
                 <input
                   type="email"
                   name="email"
-                  value={formData.email}
+                  defaultValue={user.email}
                   readOnly
                   className="w-full p-2 border rounded-lg"
                 />
@@ -83,8 +115,6 @@ const VisaDetails = () => {
                 <input
                   type="text"
                   name="firstName"
-                  value={formData.firstName}
-                  onChange={handleInputChange}
                   required
                   className="w-full p-2 border rounded-lg"
                 />
@@ -94,8 +124,6 @@ const VisaDetails = () => {
                 <input
                   type="text"
                   name="lastName"
-                  value={formData.lastName}
-                  onChange={handleInputChange}
                   required
                   className="w-full p-2 border rounded-lg"
                 />
@@ -105,7 +133,7 @@ const VisaDetails = () => {
                 <input
                   type="text"
                   name="appliedDate"
-                  value={formData.appliedDate}
+                  value={new Date().toISOString().split("T")[0]}
                   readOnly
                   className="w-full p-2 border rounded-lg"
                 />
@@ -115,7 +143,7 @@ const VisaDetails = () => {
                 <input
                   type="text"
                   name="fee"
-                  value={`$${formData.fee}`}
+                  defaultValue={`$${fee}`}
                   readOnly
                   className="w-full p-2 border rounded-lg"
                 />
