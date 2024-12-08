@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import { useLoaderData } from "react-router-dom";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const MyAddedVisas = () => {
   const { user } = useContext(AuthContext);
@@ -18,26 +17,26 @@ const MyAddedVisas = () => {
   }, [user]);
 
   // Delete visa
-  // const handleDelete = (id) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       fetch(`http://localhost:5000/visas/${id}`, {
-  //         method: "DELETE",
-  //       })
-  //         .then((res) => res.json())
-  //         .then(() => {
-  //           Swal.fire("Deleted!", "Visa has been deleted.", "success");
-  //           setVisas(visas.filter((visa) => visa._id !== id));
-  //         });
-  //     }
-  //   });
-  // };
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/visas/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then(() => {
+            Swal.fire("Deleted!", "Visa has been deleted.", "success");
+            setVisas(visas.filter((visa) => visa._id !== id));
+          });
+      }
+    });
+  };
 
   return (
     <div className="max-w-5xl mx-auto my-10">
@@ -79,7 +78,7 @@ const MyAddedVisas = () => {
                 </button>
                 <button
                   className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                  // onClick={() => handleDelete(visa._id)}
+                  onClick={() => handleDelete(visa._id)}
                 >
                   Delete
                 </button>
