@@ -1,10 +1,8 @@
-import React from 'react';
-
 const Loading = () => {
  return (
-  <div>
-   
-  </div>
+   <div className="mt-16 flex min-h-screen items-center justify-center">
+     <span className="loading loading-bars loading-lg"></span>
+   </div>
  );
 };
 

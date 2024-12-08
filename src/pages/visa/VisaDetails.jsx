@@ -34,7 +34,7 @@ const VisaDetails = () => {
     console.log(applicationData);
 
     // Send data to the server
-    fetch("http://localhost:5000/applications", {
+    fetch("https://visa-voyage-server.vercel.app/applications", {
       method: "POST",
       headers: {
         "content-type": "application/json",

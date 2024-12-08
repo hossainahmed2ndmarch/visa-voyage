@@ -11,7 +11,7 @@ const MyAddedVisas = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/my-added-visas/${user?.email}`)
+      fetch(`https://visa-voyage-server.vercel.app/my-added-visas/${user?.email}`)
         .then((res) => res.json())
         .then((data) => setVisas(data))
         .catch((error) => console.error("Error fetching visas:", error));
@@ -28,7 +28,7 @@ const MyAddedVisas = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/visas/${id}`, {
+        fetch(`https://visa-voyage-server.vercel.app/visas/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

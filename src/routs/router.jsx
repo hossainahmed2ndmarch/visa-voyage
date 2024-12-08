@@ -21,12 +21,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/visas/home"),
+        loader: () => fetch("https://visa-voyage-server.vercel.app/visas/home"),
       },
       {
         path: "all-visas",
         element: <AllVisas></AllVisas>,
-        loader: () => fetch("http://localhost:5000/visas"),
+        loader: () => fetch("https://visa-voyage-server.vercel.app/visas"),
       },
       {
         path: "login",
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/visas/${params.id}`),
+          fetch(`https://visa-voyage-server.vercel.app/visas/${params.id}`),
       },
       {
         path: "/add-visa",
@@ -69,7 +69,8 @@ const router = createBrowserRouter([
             <MyApplications />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/applications"),
+        loader: () =>
+          fetch("https://visa-voyage-server.vercel.app/applications"),
       },
     ],
   },

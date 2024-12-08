@@ -34,7 +34,7 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
     const updatedVisaData = Object.fromEntries(formData.entries());
     updatedVisaData.requiredDocuments = updatedRequiredDocuments;
     // updatedVisaData.addedBy = user.email;
-    fetch(`http://localhost:5000/visas/${visa._id}`, {
+    fetch(`https://visa-voyage-server.vercel.app/visas/${visa._id}`, {
       method: "PUT",
       headers: {
         "content-Type": "application/json",
