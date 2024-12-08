@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const AddVisa = () => {
   const [visaType, setVisaType] = useState("Tourist visa");
   const [requiredDocuments, setRequiredDocuments] = useState([]);
+  const { user } = useContext(AuthContext);
 
   const handleCheckboxChange = (e) => {
     const value = e.target.value;
@@ -19,6 +21,7 @@ const AddVisa = () => {
     const formData = new FormData(e.target);
     const visaData = Object.fromEntries(formData.entries());
     visaData.requiredDocuments = requiredDocuments;
+    visaData.addedBy = user.email;
     console.log(visaData);
 
     // Send data to the server
