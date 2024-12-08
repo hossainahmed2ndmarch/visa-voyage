@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import UpdateVisaModal from "./UpdateVisaModal";
 
 const MyAddedVisas = () => {
   const { user } = useContext(AuthContext);
   const [visas, setVisas] = useState([]);
+  const [selectedVisa, setSelectedVisa] = useState(null);
 
   useEffect(() => {
     if (user?.email) {
@@ -72,7 +74,7 @@ const MyAddedVisas = () => {
               <div className="flex justify-between mt-4">
                 <button
                   className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                  // onClick={() => console.log("Update logic here!")}
+                  onClick={() => setSelectedVisa(visa)}
                 >
                   Update
                 </button>
@@ -87,6 +89,24 @@ const MyAddedVisas = () => {
           </div>
         ))}
       </div>
+      {/* Modal for Updating Visa */}
+      {selectedVisa && (
+        <UpdateVisaModal
+          visa={selectedVisa}
+          setVisas={setVisas}
+          visas={visas}
+          onClose={() => setSelectedVisa(null)} // Close modal
+          onUpdate={(updatedVisa) => {
+            // Update visa in the list
+            setVisas(
+              visas.map((visa) =>
+                visa._id === updatedVisa._id ? updatedVisa : visa
+              )
+            );
+            setSelectedVisa(null); // Close modal
+          }}
+        />
+      )}
     </div>
   );
 };
