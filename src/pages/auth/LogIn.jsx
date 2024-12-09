@@ -12,6 +12,7 @@ const LogIn = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+
   // Validation Input Field
   const validateForm = (email, password) => {
     const errors = {};
@@ -30,6 +31,7 @@ const LogIn = () => {
 
     return errors;
   };
+
   // Submit functionality
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +53,6 @@ const LogIn = () => {
         toast.success(`🎉 Welcome back! ${user?.displayName} Happy learning!`);
         navigate(location?.state ? location?.state : "/");
       })
-
       .catch((err) => {
         const errorMessage =
           err.code === "auth/wrong-password"
@@ -67,10 +68,8 @@ const LogIn = () => {
       toast.success("🎉 Welcome! Your Google signup was successful!", {
         icon: "🌟",
       });
-
       navigate("/");
     });
-    // .catch((error) => console.log("ERROR", error.message));
   };
 
   // Forgot password functionality
@@ -80,18 +79,19 @@ const LogIn = () => {
     setResetEmail(email);
     navigate("/auth/forgot-password");
   };
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center  py-8">
       <Helmet>
-        <title>Login | Lıngo Bıngo</title>
+        <title>Login | VisaVoyage</title>
       </Helmet>
-      <div className="card bg-white/20 backdrop-blur-sm rounded-3xl  shadow-2xl w-full max-w-2xl p-2 md:p-[76px] shrink-0 ">
-        <h2 className="text-4xl font-semibold text-navyText text-center">
-          Login your account
+      <div className="card bg-white/20 backdrop-blur-sm rounded-3xl shadow-2xl w-full max-w-lg p-6 md:p-12 flex flex-col items-center">
+        <h2 className="text-4xl font-semibold text-navyText text-center mb-6">
+          Login to your account
         </h2>
-        <form onSubmit={handleSubmit} className="card-body">
+        <form onSubmit={handleSubmit} className="w-full">
           {/* Email */}
-          <div className="form-control">
+          <div className="form-control mb-4">
             <label className="label">
               <span className="label-text text-xl text-navyText font-semibold">
                 Email address
@@ -101,7 +101,7 @@ const LogIn = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-xl"
+              className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             {error.email && (
@@ -110,8 +110,9 @@ const LogIn = () => {
               </p>
             )}
           </div>
+
           {/* Password */}
-          <div className="form-control relative">
+          <div className="form-control relative mb-6">
             <label className="label">
               <span className="label-text text-xl text-navyText font-semibold">
                 Password
@@ -121,14 +122,14 @@ const LogIn = () => {
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-xl"
+             className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             <button
               onClick={() => setShowPassword(!showPassword)}
-              className="btn btn-xs bg-transparent hover:bg-transparent shadow-none border-none absolute right-2 top-14"
+              className="btn btn-xs bg-transparent hover:bg-transparent shadow-none border-none absolute right-4 top-14"
             >
-              {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
             {error.password && (
               <p className="text-red-600 text-sm mt-2 font-semibold">
@@ -150,26 +151,30 @@ const LogIn = () => {
               </a>
             </label>
           </div>
+
+          {/* Submit Button */}
           <div className="form-control mt-6">
-            <button className="btn bg-gradient-to-r from-blue-400 to-teal-300 text-navyText rounded-2xl border-none text-xl font-semibold shadow-xl">
+            <button className="py-2 px-4 rounded-lg bg-white shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.7)] font-semibold text-blue-600 transition-all hover:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] w-full">
               Login
             </button>
           </div>
+
+          {/* Google Signup Button */}
           <div className="form-control mt-6">
             <h5 className="text-3xl font-semibold text-navyText text-center mb-6">
               Or
             </h5>
             <button
               onClick={handleGoogleSignUp}
-              className="btn bg-gradient-to-r from-blue-200 to-teal-100 border-none  text-navyText rounded-2xl  text-xl font-semibold shadow-xl"
+              className="py-2 px-4 rounded-lg bg-white  shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.7)] font-semibold text-blue-600 transition-all hover:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] w-full flex items-center justify-center"
             >
-              <FaGoogle></FaGoogle>{" "}
-              <span className="hidden md:flex">Sign Up With Google</span>
+              <FaGoogle />
+              <span className="ml-2">Sign Up With Google</span>
             </button>
           </div>
         </form>
-        <p className="font-semibold text-navyText text-center">
-          Don’t Have An Account ?{" "}
+        <p className="font-semibold text-navyText text-center mt-6">
+          Don’t Have An Account?{" "}
           <Link to={"/registration"} className="text-[#F75B5F]">
             Register
           </Link>

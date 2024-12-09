@@ -93,7 +93,7 @@ const Registration = () => {
     // .catch((error) => console.log("ERROR", error.message));
   };
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center py-8">
       <Helmet>
         <title>Register | VisaVoyage</title>
       </Helmet>
@@ -113,7 +113,7 @@ const Registration = () => {
               type="text"
               name="name"
               placeholder="Enter your name"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-xl"
+              className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             {errors.name && (
@@ -133,7 +133,7 @@ const Registration = () => {
               type="text"
               name="photo"
               placeholder="Drop your photo url"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-xl"
+              className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             {errors.photo && (
@@ -153,7 +153,7 @@ const Registration = () => {
               type="email"
               name="email"
               placeholder="Enter your email address"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             {errors.email && (
@@ -173,7 +173,7 @@ const Registration = () => {
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-xl"
+              className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             <button
@@ -199,7 +199,7 @@ const Registration = () => {
               type={showPassword ? "text" : "password"}
               name="confirmPassword"
               placeholder="Enter your password"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-xl"
+              className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             <button
@@ -240,7 +240,7 @@ const Registration = () => {
             )}
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-gradient-to-r from-blue-400 to-teal-300 text-navyText rounded-2xl border-none text-xl font-semibold shadow-xl">
+            <button className="py-2 px-4 rounded-lg bg-white shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.7)] font-semibold text-blue-600 transition-all hover:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] w-full">
               Register
             </button>
           </div>
@@ -255,7 +255,7 @@ const Registration = () => {
             </h5>
             <button
               onClick={handleGoogleSignUp}
-              className="btn bg-gradient-to-r from-blue-200 to-teal-100 border-none  text-navyText rounded-2xl  text-xl font-semibold shadow-xl"
+              className="flex items-center space-x-2 justify-center py-2 px-4 rounded-lg bg-white shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.7)] font-semibold text-blue-600 transition-all hover:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] w-full"
             >
               <FaGoogle></FaGoogle>{" "}
               <span className="hidden md:flex">Sign Up With Google</span>

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../provider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddVisa = () => {
   const [visaType, setVisaType] = useState("Tourist visa");
@@ -47,7 +48,10 @@ const AddVisa = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center py-8">
+      <Helmet>
+        <title>AddVisa | VisaVoyage</title>
+      </Helmet>
       <div className="card bg-white/20 backdrop-blur-sm rounded-3xl shadow-2xl w-full max-w-3xl p-6 md:p-12 shrink-0">
         <h2 className="text-4xl font-semibold text-navyText text-center">
           Add a Visa
@@ -64,7 +68,7 @@ const AddVisa = () => {
               type="text"
               name="countryImage"
               placeholder="Enter the image URL"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
           </div>
@@ -80,7 +84,7 @@ const AddVisa = () => {
               type="text"
               name="countryName"
               placeholder="Enter the country name"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
           </div>
@@ -96,7 +100,7 @@ const AddVisa = () => {
               name="visaType"
               value={visaType}
               onChange={(e) => setVisaType(e.target.value)}
-              className="select bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             >
               <option value="Tourist visa">Tourist visa</option>
@@ -131,7 +135,7 @@ const AddVisa = () => {
               type="number"
               name="processingTime"
               placeholder="Enter processing time"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
           </div>
@@ -193,7 +197,7 @@ const AddVisa = () => {
             <textarea
               name="description"
               placeholder="Write a brief description"
-              className="textarea bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="textarea outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             ></textarea>
           </div>
@@ -209,7 +213,7 @@ const AddVisa = () => {
               type="number"
               name="ageRestriction"
               placeholder="Enter the minimum age"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
           </div>
@@ -225,7 +229,7 @@ const AddVisa = () => {
               type="number"
               name="fee"
               placeholder="Enter the visa fee"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
           </div>
@@ -241,7 +245,7 @@ const AddVisa = () => {
               type="number"
               name="validity"
               placeholder="Enter validity period"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
           </div>
@@ -257,14 +261,13 @@ const AddVisa = () => {
               type="text"
               name="applicationMethod"
               placeholder="E.g., Online or In-person"
-              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
-              required
+              className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl  shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
             />
           </div>
 
           {/* Submit Button */}
           <div className="form-control mt-6">
-            <button className="btn bg-gradient-to-r from-blue-400 to-teal-300 text-navyText rounded-2xl border-none text-xl font-semibold shadow-xl">
+            <button className="btn text-navyText rounded-2xl border-none text-xl font-semibold py-2 px-4  bg-white shadow-[4px_4px_8px_rgba(0,0,0,0.2),-4px_-4px_8px_rgba(255,255,255,0.7)]  text-blue-600 transition-all hover:shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] w-full">
               Add Visa
             </button>
           </div>

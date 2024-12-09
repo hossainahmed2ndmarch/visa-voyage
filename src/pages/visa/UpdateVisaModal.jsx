@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { AuthContext } from "../../provider/AuthProvider";
+// import { AuthContext } from "../../provider/AuthProvider";
 
 const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
   // const { user } = useContext(AuthContext);
@@ -50,8 +50,8 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
           )
         );
         onClose(); // Close modal
-      })
-      // .catch((error) => console.error("Error updating visa:", error));
+      });
+    // .catch((error) => console.error("Error updating visa:", error));
   };
 
   return (
@@ -77,7 +77,7 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
                 name="countryImage"
                 defaultValue={countryImage}
                 placeholder="Enter the image URL"
-                className="input outline-none bg-gray-100 rounded-lg"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               />
             </div>
@@ -94,7 +94,7 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
                 name="countryName"
                 defaultValue={countryName}
                 placeholder="Enter the country name"
-                className="input outline-none bg-gray-100 rounded-lg"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               />
             </div>
@@ -111,10 +111,9 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
                 defaultValue={visaType}
                 value={updatedVisaType}
                 onChange={(e) => setUpdatedVisaType(e.target.value)}
-                className="select bg-gray-100 rounded-lg"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               >
-                {/* Visa type options */}
                 <option value="Tourist visa">Tourist visa</option>
                 <option value="Student visa">Student visa</option>
                 <option value="Official visa">Official visa</option>
@@ -148,7 +147,7 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
                 name="processingTime"
                 defaultValue={processingTime}
                 placeholder="Enter processing time"
-                className="input outline-none bg-gray-100 rounded-lg"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               />
             </div>
@@ -208,11 +207,12 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
                 name="description"
                 defaultValue={description}
                 placeholder="Write a brief description"
-                className="textarea bg-gray-100 rounded-lg"
+                className="textarea outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
-              ></textarea>
+              />
             </div>
 
+            {/* Age Restriction */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text text-lg font-medium">
@@ -220,43 +220,41 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
                 </span>
               </label>
               <input
-                type="number"
+                type="text"
                 name="ageRestriction"
                 defaultValue={ageRestriction}
-                placeholder="Enter the minimum age"
-                className="input outline-none bg-gray-100 rounded-lg"
+                placeholder="Enter age restriction"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               />
             </div>
 
+            {/* Fee */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-lg font-medium">
-                  Fee (in USD)
-                </span>
+                <span className="label-text text-lg font-medium">Fee</span>
               </label>
               <input
-                type="number"
+                type="text"
                 name="fee"
-                placeholder="Enter the visa fee"
                 defaultValue={fee}
-                className="input outline-none bg-gray-100 rounded-lg"
+                placeholder="Enter the visa fee"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               />
             </div>
+
             {/* Validity */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-xl text-navyText font-semibold">
-                  Validity (in months)
-                </span>
+                <span className="label-text text-lg font-medium">Validity</span>
               </label>
               <input
-                type="number"
+                type="text"
                 name="validity"
                 defaultValue={validity}
-                placeholder="Enter validity period"
-                className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+                placeholder="Enter visa validity"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               />
             </div>
@@ -264,7 +262,7 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
             {/* Application Method */}
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-xl text-navyText font-semibold">
+                <span className="label-text text-lg font-medium">
                   Application Method
                 </span>
               </label>
@@ -272,23 +270,24 @@ const UpdateVisaModal = ({ visa, onClose, onUpdate, visas, setVisas }) => {
                 type="text"
                 name="applicationMethod"
                 defaultValue={applicationMethod}
-                placeholder="E.g., Online or In-person"
-                className="input outline-none bg-white/20 backdrop-blur-lg rounded-2xl shadow-xl"
+                placeholder="Enter the application method"
+                className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
                 required
               />
             </div>
-            {/* Footer Buttons */}
-            <div className="p-4 flex justify-end gap-4 border-t border-gray-200">
+
+            {/* Modal Actions */}
+            <div className="flex justify-between mt-6">
               <button
                 type="button"
-                className="btn bg-gray-500 text-white rounded-lg"
                 onClick={onClose}
+                className="px-4 py-2 bg-gray-300 text-black font-semibold rounded-lg shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] hover:bg-gray-400 transition"
               >
-                Cancel
+                Close
               </button>
               <button
                 type="submit"
-                className="btn bg-gradient-to-r from-blue-400 to-teal-300 text-white rounded-lg"
+                className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)]  hover:bg-blue-700 transition"
               >
                 Update Visa
               </button>

@@ -9,9 +9,11 @@
 @import "swiper/swiper-bundle.min.css";
 
 .active {
-  background: linear-gradient(to right, #60a5fa, #4fd1c5);
-  color: #37474f;
+  
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
 }
+
 
 :root {
   --primary-bg-color: white;

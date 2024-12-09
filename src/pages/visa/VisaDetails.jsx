@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const VisaDetails = () => {
   const visa = useLoaderData();
@@ -57,7 +58,10 @@ const VisaDetails = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-10 p-6 rounded-xl shadow-md bg-gray-100">
+    <div className="max-w-4xl mx-auto my-10  rounded-xl shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] bg-gray-100">
+      <Helmet>
+        <title>Visa Details | VisaVoyage</title>
+      </Helmet>
       <div className="flex flex-col items-center">
         <img
           src={countryImage}
@@ -69,7 +73,7 @@ const VisaDetails = () => {
           <strong>Visa Type:</strong> {visaType}
         </p>
       </div>
-      <div className="space-y-3">
+      <div className="space-y-3 p-6">
         <p>
           <strong>Description:</strong> {description}
         </p>
@@ -94,81 +98,119 @@ const VisaDetails = () => {
         </p>
         <button
           onClick={() => setIsModalOpen(true)}
-          className="mt-6 py-2 px-4 bg-gradient-to-r from-blue-400 to-teal-300 text-white font-semibold rounded-lg shadow hover:shadow-md"
+          className="mt-6 py-2 px-4 bg-gradient-to-r from-blue-400 to-teal-300 text-white font-semibold rounded-lg shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)]"
         >
           Apply for the Visa
         </button>
       </div>
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full">
-            <h2 className="text-2xl font-bold mb-4">Apply for the Visa</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="block font-semibold mb-1">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  defaultValue={user.email}
-                  readOnly
-                  className="w-full p-2 border rounded-lg"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block font-semibold mb-1">First Name</label>
-                <input
-                  type="text"
-                  name="firstName"
-                  required
-                  className="w-full p-2 border rounded-lg"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block font-semibold mb-1">Last Name</label>
-                <input
-                  type="text"
-                  name="lastName"
-                  required
-                  className="w-full p-2 border rounded-lg"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block font-semibold mb-1">Applied Date</label>
-                <input
-                  type="text"
-                  name="appliedDate"
-                  value={new Date().toISOString().split("T")[0]}
-                  readOnly
-                  className="w-full p-2 border rounded-lg"
-                />
-              </div>
-              <div className="mb-4">
-                <label className="block font-semibold mb-1">Fee</label>
-                <input
-                  type="text"
-                  name="fee"
-                  defaultValue={`$${fee}`}
-                  readOnly
-                  className="w-full p-2 border rounded-lg"
-                />
-              </div>
-              <div className="flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setIsModalOpen(false)}
-                  className="mr-4 py-2 px-4 bg-gray-200 rounded-lg"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="py-2 px-4 bg-blue-500 text-white font-bold rounded-lg"
-                >
-                  Apply
-                </button>
-              </div>
-            </form>
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg h-auto overflow-hidden flex flex-col">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-blue-400 to-teal-300 p-6 text-center">
+              <h2 className="text-3xl font-bold text-white">
+                Apply for the Visa
+              </h2>
+            </div>
+
+            {/* Form Container */}
+            <div className="overflow-y-auto flex-grow p-6 space-y-4">
+              <form onSubmit={handleSubmit}>
+                {/* Email Field */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-medium">
+                      Email
+                    </span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    defaultValue={user.email}
+                    readOnly
+                    className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
+                  />
+                </div>
+
+                {/* First Name */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-medium">
+                      First Name
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    required
+                    className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
+                  />
+                </div>
+
+                {/* Last Name */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-medium">
+                      Last Name
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    required
+                    className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
+                  />
+                </div>
+
+                {/* Applied Date */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-medium">
+                      Applied Date
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="appliedDate"
+                    value={new Date().toISOString().split("T")[0]}
+                    readOnly
+                    className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
+                  />
+                </div>
+
+                {/* Fee */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-medium">Fee</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="fee"
+                    defaultValue={`$${fee}`}
+                    readOnly
+                    className="input outline-none rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all w-full focus:outline-none"
+                  />
+                </div>
+
+                {/* Modal Actions */}
+                <div className="flex justify-between mt-6">
+                  <button
+                    type="button"
+                    onClick={() => setIsModalOpen(false)}
+                    className="px-6 py-2 bg-gray-300 text-black font-semibold rounded-lg shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] hover:bg-gray-400 transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] hover:bg-blue-700 transition"
+                  >
+                    Apply
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       )}

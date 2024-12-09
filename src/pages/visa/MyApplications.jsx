@@ -32,7 +32,7 @@ const MyApplications = () => {
           })
           .catch((error) => {
             Swal.fire("Error!", "Something went wrong.", "error");
-            console.error("Error deleting application:", error);
+            // console.error("Error deleting application:", error);
           });
       }
     });
@@ -47,23 +47,30 @@ const MyApplications = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Your Visa Applications</h2>
+      <Helmet>
+        <title>My Applications | VisaVoyage</title>
+      </Helmet>
+      <h2 className="text-2xl font-bold mb-4 text-center">
+        Your Visa Applications
+      </h2>
 
       {/* Search Section */}
-      <div className="mb-6 flex items-center gap-4">
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search by country"
-          className="border rounded-md p-2 w-full md:w-1/3"
-        />
-        <button
-          onClick={handleSearch}
-          className="btn bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600"
-        >
-          Search
-        </button>
+      <div className="mb-6 flex justify-center gap-4">
+        <div className="relative w-full md:w-1/3">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search by country"
+            className="w-full p-4  bg-white/20 backdrop-blur-md   placeholder-gray-500    rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all focus:outline-none"
+          />
+          <button
+            onClick={handleSearch}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white rounded-lg px-4 py-2 shadow-xl hover:bg-blue-600 transition-all "
+          >
+            Search
+          </button>
+        </div>
       </div>
 
       {/* Applications Grid */}
@@ -72,54 +79,60 @@ const MyApplications = () => {
           userApplications.map((app) => (
             <div
               key={app._id}
-              className="border rounded-lg shadow p-4 flex flex-col space-y-4"
+              className="border rounded-lg shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)]  space-y-4 bg-white/20 backdrop-blur-md overflow-hidden transition-all"
             >
               {/* Country Image */}
-              <img
-                src={app.countryImage}
-                alt={app.countryName}
-                className="rounded-lg object-cover w-full h-full"
-              />
+              <div >
+                {" "}
+                <img
+                  src={app.countryImage}
+                  alt={app.country}
+                  className="h-full w-full object-cover"
+                />
+              </div>
 
-              {/* Country */}
-              <h3 className="text-xl font-bold">{app.countryName}</h3>
+              <div className="p-4">
+                {/* Country */}
+                <h3 className="text-xl font-bold">{app.countryName}</h3>
 
-              {/* Visa Info */}
-              <p>
-                <strong>Visa Type:</strong> {app.visaType}
-              </p>
-              <p>
-                <strong>Processing Time:</strong> {app.processingTime} days
-              </p>
-              <p>
-                <strong>Fee:</strong> ${app.fee}
-              </p>
-              <p>
-                <strong>Validity:</strong> {app.validity} months
-              </p>
-              <p>
-                <strong>Application Method:</strong> {app.applicationMethod}
-              </p>
+                {/* Visa Info */}
+                <p>
+                  <strong>Visa Type:</strong> {app.visaType}
+                </p>
+                <p>
+                  <strong>Processing Time:</strong> {app.processingTime} days
+                </p>
+                <p>
+                  <strong>Fee:</strong> {app.fee}
+                </p>
+                <p>
+                  <strong>Validity:</strong> {app.validity} months
+                </p>
+                <p>
+                  <strong>Application Method:</strong> {app.applicationMethod}
+                </p>
 
-              {/* Applicant Info */}
-              <p>
-                <strong>Applied Date:</strong>{" "}
-                {new Date(app.appliedDate).toLocaleDateString()}
-              </p>
-              <p>
-                <strong>Applicant:</strong> {`${app.firstName} ${app.lastName}`}
-              </p>
-              <p>
-                <strong>Email:</strong> {app.email}
-              </p>
+                {/* Applicant Info */}
+                <p>
+                  <strong>Applied Date:</strong>{" "}
+                  {new Date(app.appliedDate).toLocaleDateString()}
+                </p>
+                <p>
+                  <strong>Applicant:</strong>{" "}
+                  {`${app.firstName} ${app.lastName}`}
+                </p>
+                <p>
+                  <strong>Email:</strong> {app.email}
+                </p>
 
-              {/* Cancel Button */}
-              <button
-                onClick={() => handleCancel(app._id)}
-                className="btn bg-red-500 text-white rounded-md hover:bg-red-600"
-              >
-                Cancel
-              </button>
+                {/* Cancel Button */}
+                <button
+                  onClick={() => handleCancel(app._id)}
+                  className="bg-red-500 text-white rounded-lg py-2 px-4 shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] hover:bg-red-600 transition-all"
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           ))
         ) : (

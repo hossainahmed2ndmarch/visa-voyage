@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AllVisas = () => {
   const loadedAllVisas = useLoaderData(); // Data loaded from the router loader
@@ -26,6 +27,9 @@ const AllVisas = () => {
 
   return (
     <div className="container mx-auto py-10 px-4">
+      <Helmet>
+        <title>AllVisa | VisaVoyage</title>
+      </Helmet>
       <h2 className="text-4xl font-bold text-center mb-8 text-gray-800">
         All Visas
       </h2>
@@ -50,7 +54,7 @@ const AllVisas = () => {
         {filteredVisas.map((visa) => (
           <div
             key={visa._id}
-            className="bg-white p-6 rounded-3xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+            className="bg-white p-6 rounded-3xl shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] transition-all transform hover:scale-105"
           >
             <img
               src={visa.countryImage}
@@ -71,7 +75,7 @@ const AllVisas = () => {
             </p>
             <button
               onClick={() => navigate(`/visa-details/${visa._id}`)}
-              className="mt-4 py-2 px-4 w-full rounded-lg bg-gradient-to-r from-blue-400 to-teal-300 text-white font-semibold hover:shadow-md transition-all"
+              className="mt-4 py-2 px-4 w-full rounded-lg bg-gradient-to-r shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] from-blue-400 to-teal-300 text-white font-semibold hover:shadow-md transition-all"
             >
               See Details
             </button>
