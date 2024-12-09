@@ -54,31 +54,35 @@ const AllVisas = () => {
         {filteredVisas.map((visa) => (
           <div
             key={visa._id}
-            className="bg-white p-6 rounded-3xl shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] transition-all transform hover:scale-105"
+            className="bg-white rounded-3xl shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] transition-all transform hover:scale-105"
           >
-            <img
-              src={visa.countryImage}
-              alt={visa.countryName}
-              className="rounded-lg w-full h-40 object-cover mb-4"
-            />
-            <h3 className="text-xl font-semibold text-gray-800">
-              {visa.countryName}
-            </h3>
-            <p className="text-sm text-gray-600">
-              <strong>Visa Type:</strong> {visa.visaType}
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Processing Time:</strong> {visa.processingTime}
-            </p>
-            <p className="text-sm text-gray-600">
-              <strong>Fee:</strong> ${visa.fee}
-            </p>
-            <button
-              onClick={() => navigate(`/visa-details/${visa._id}`)}
-              className="mt-4 py-2 px-4 w-full rounded-lg bg-gradient-to-r shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] from-blue-400 to-teal-300 text-white font-semibold hover:shadow-md transition-all"
-            >
-              See Details
-            </button>
+            <div>
+              <img
+                src={visa.countryImage}
+                alt={visa.countryName}
+                className="rounded-lg w-full h-full object-cover mb-4"
+              />
+            </div>
+            <div className=" p-6">
+              <h3 className="text-xl font-semibold text-gray-800">
+                {visa.countryName}
+              </h3>
+              <p className="text-sm text-gray-600">
+                <strong>Visa Type:</strong> {visa.visaType}
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Processing Time:</strong> {visa.processingTime}
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Fee:</strong> ${visa.fee}
+              </p>
+              <button
+                onClick={() => navigate(`/visa-details/${visa._id}`)}
+                className="mt-4 py-2 px-4 w-full rounded-lg bg-gradient-to-r shadow-[5px_5px_10px_rgba(0,0,0,0.3),-5px_-5px_10px_rgba(255,255,255,0.2)] from-blue-400 to-teal-300 text-white font-semibold hover:shadow-md transition-all"
+              >
+                See Details
+              </button>
+            </div>
           </div>
         ))}
       </div>
