@@ -6,6 +6,7 @@ import userIcon from "../assets/user.png";
 import { toast } from "react-toastify";
 import { useTheme } from "../provider/ThemeProvider";
 import { Tooltip } from "react-tooltip";
+import { FaPlaneDeparture } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -75,7 +76,8 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="text-xl font-bold text-blue-600 dark:text-teal-300">
+        <a className="text-3xl flex items-center  font-bold text-blue-600 dark:text-teal-300">
+        <FaPlaneDeparture className="ml-1" />
           VisaVoyage
         </a>
       </div>
