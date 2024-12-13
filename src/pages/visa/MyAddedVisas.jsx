@@ -18,7 +18,7 @@ const MyAddedVisas = () => {
         .then((res) => res.json())
         .then((data) => setVisas(data));
     }
-  }, [user]);
+  }, [user?.email]);
 
   // Delete visa
   const handleDelete = (id) => {

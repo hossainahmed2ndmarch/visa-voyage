@@ -1,11 +1,13 @@
 import React, { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
 const VisaDetails = () => {
   const visa = useLoaderData();
+  const { id } = useParams();
+
   const { user } = useContext(AuthContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const {
@@ -26,12 +28,7 @@ const VisaDetails = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const applicationData = Object.fromEntries(formData.entries());
-    applicationData.countryName = countryName;
-    applicationData.countryImage = countryImage;
-    applicationData.visaType = visaType;
-    applicationData.processingTime = processingTime;
-    applicationData.validity = validity;
-    applicationData.applicationMethod = applicationMethod;
+    applicationData.visa_id = id;
     // console.log(applicationData);
 
     // Send data to the server
