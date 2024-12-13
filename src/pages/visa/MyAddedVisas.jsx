@@ -13,7 +13,7 @@ const MyAddedVisas = () => {
   useEffect(() => {
     if (user?.email) {
       fetch(
-        `https://visa-voyage-server.vercel.app/my-added-visas/${user?.email}`
+        `https://visa-voyage-server.vercel.app/my-added-visas?email=${user?.email}`
       )
         .then((res) => res.json())
         .then((data) => setVisas(data));

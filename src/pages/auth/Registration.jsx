@@ -11,6 +11,7 @@ const Registration = () => {
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const from = location.state || "/";
 
   // Validation Errors
   const validateForm = (data) => {
@@ -71,7 +72,7 @@ const Registration = () => {
                 icon: "🚀",
               }
             );
-            navigate("/");
+            navigate(from);
           })
           .catch((error) => {
             // console.error("Profile Update Error: ", error);
@@ -88,7 +89,7 @@ const Registration = () => {
   const handleGoogleSignUp = () => {
     signUpWithGoogle().then((res) => {
       // console.log(res);
-      navigate("/");
+      navigate(from);
     });
     // .catch((error) => console.log("ERROR", error.message));
   };
@@ -130,7 +131,7 @@ const Registration = () => {
               </span>
             </label>
             <input
-              type="text"
+              type="url"
               name="photo"
               placeholder="Drop your photo url"
               className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"

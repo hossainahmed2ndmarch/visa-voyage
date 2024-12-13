@@ -11,6 +11,7 @@ const LogIn = () => {
   const [error, setError] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state || "/";
   const [showPassword, setShowPassword] = useState(false);
 
   // Validation Input Field
@@ -51,7 +52,7 @@ const LogIn = () => {
         setUser(user);
         e.target.reset();
         toast.success(`🎉 Welcome back! ${user?.displayName} Happy learning!`);
-        navigate(location?.state ? location?.state : "/");
+        navigate(from);
       })
       .catch((err) => {
         const errorMessage =
@@ -68,7 +69,7 @@ const LogIn = () => {
       toast.success("🎉 Welcome! Your Google signup was successful!", {
         icon: "🌟",
       });
-      navigate("/");
+      navigate(from);
     });
   };
 
@@ -122,7 +123,7 @@ const LogIn = () => {
               type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Enter your password"
-             className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
+              className="py-2 px-4 rounded-lg shadow-[inset_4px_4px_8px_rgba(0,0,0,0.2),inset_-4px_-4px_8px_rgba(255,255,255,0.7)] bg-gray-100 dark:bg-gray-700 text-blue-600 dark:text-teal-300 font-semibold transition-all  w-full focus:outline-none"
               required
             />
             <button
